@@ -17,10 +17,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - name: Setup git
-        run: |
-          git config user.email ${{ secrets.GIT_EMAIL }}
-          git config user.name ${{ secrets.GIT_NAME }}
+
       - run: npm install
+
       - run: npm run build
-      - run: npm run deploy
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          enable_jekyll: false
