@@ -20,7 +20,9 @@ jobs:
 
       - run: npm install
 
-      - run: npm run build
+      - run: npm run build -- --base=/$BASE_NAME/
+        env:
+          BASE_NAME: generate-text-video
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
