@@ -6,7 +6,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "deploy": "touch build/.nojekyll && gh-pages -d build -t"
+    "deploy": "touch dist/.nojekyll && gh-pages -d dist -t"
   },
   "author": "succie",
   "license": "MIT",
