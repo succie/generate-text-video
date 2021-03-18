@@ -6,8 +6,10 @@
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "importsNotUsedAsValues": "error",
     "baseUrl": "./",
-    "paths": { "*": ["./.snowpack/types/*"] }
+    "skipLibCheck": true,
+    "types": ["svelte"]
   },
-  "include": ["src/"]
+  "include": ["src"]
 }
