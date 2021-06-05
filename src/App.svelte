@@ -2,13 +2,7 @@
   import html2canvas from 'html2canvas';
   import { createFFmpeg } from '@ffmpeg/ffmpeg';
 
-  let progress: number = 0;
-
-  const ffmpeg = createFFmpeg({
-    progress: ({ ratio }) => {
-      progress = ratio;
-    }
-  });
+  const ffmpeg = createFFmpeg();
 
   let text: string = 'ここにテキスト';
   let textColor: string = '#fff';
@@ -18,10 +12,9 @@
 
   const onClick = async () => {
     const canvas = await html2canvas(preview);
+    await ffmpeg.load();
     canvas.toBlob(async (blob) => {
       if (!blob) throw new Error('blob');
-
-      await ffmpeg.load();
 
       ffmpeg.FS(
         'writeFile',
@@ -69,10 +62,6 @@
   >
     {text}
   </div>
-</section>
-
-<section>
-  {progress}
 </section>
 
 <style>
